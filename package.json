@@ -13,7 +13,8 @@
     "tsc-build": "tsc -p electron/src && node minify.js",
     "tsc-build2": "tsc -p electron/build",
     "build-electron": "node electron/build/build.js",
-    "installer-electron": "node electron/build/createinstaller.js"
+    "installer-electron": "node electron/build/createinstaller.js",
+    "sync": "node sync-git.js"
   },
   "private": true,
   "dependencies": {
@@ -67,6 +68,7 @@
     "karma-jasmine": "~4.0.1",
     "karma-jasmine-html-reporter": "~1.7.0",
     "node-notifier": "^10.0.1",
+    "shelljs": "^0.8.5",
     "typescript": "~4.6.3"
   },
   "peerDependencies": {
