@@ -1,0 +1,42 @@
+<fast-design-system-provider use-defaults>
+    <div class="background">
+        <div class="header">
+            <fast-tabs>
+                <fast-tab slot="tab">
+                    <fluent-ui-icon name="home_24_filled" class="beat"></fluent-ui-icon>
+                </fast-tab>
+                <fast-tab slot="tab">EMISION</fast-tab>
+                <fast-tab slot="tab">ANIMES</fast-tab>
+                <fast-tab slot="tab">PELICULAS</fast-tab>
+                <fast-tab slot="tab">ESTRENOS</fast-tab>
+                <fast-tab-panel slot="tabpanel" class="tabpanel1"><page-home></page-home></fast-tab-panel>
+                <fast-tab-panel slot="tabpanel" class="tabpanel1"><page-emision></page-emision></fast-tab-panel>
+                <fast-tab-panel slot="tabpanel" class="tabpanel1"><page-animes></page-animes></fast-tab-panel>
+                <fast-tab-panel slot="tabpanel" class="tabpanel1"><page-movies></page-movies></fast-tab-panel>
+                <fast-tab-panel slot="tabpanel" class="tabpanel1"><page-premieres></page-premieres></fast-tab-panel>
+
+                <fast-toolbar slot="end">
+                    <fast-text-field id="text-search" slot="start" placeholder="Buscar..." appearance="outline" name="search" type="text" (keyup.enter)="goSearch()"></fast-text-field>
+                    <fast-listbox id="listSearch">
+                        <fast-option *ngFor="let itemSearch of listSearch" [value]="itemSearch.url" (click)="openInfoAnime(itemSearch.url)">{{ itemSearch.title}}</fast-option>
+                    </fast-listbox>
+                    <fast-button slot="end" type="button" appearance="outline" (click)="goSearch()">
+                        <fluent-ui-icon name="search_20_regular" class="beat" style="fill: #FFFFFF;"></fluent-ui-icon>
+                    </fast-button>
+                </fast-toolbar>
+            </fast-tabs>
+        </div>
+    </div>
+
+    <div class="modal search-result" id="search-results">
+        <template #searchsContent></template>
+    </div>
+    <div class="modal view-anime" id="view-anime">
+        <template #infoContent></template>
+    </div>
+    <div class="modal load-view" id="load-viewer">
+        <div class="content">
+            <fast-progress-ring></fast-progress-ring>
+        </div>
+    </div>
+</fast-design-system-provider>

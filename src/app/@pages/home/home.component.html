@@ -1,0 +1,87 @@
+<ngx-simplebar [options]="optionScroll" id="home-page">
+    <div class="fixed">
+        <div class="card">
+            <div class="header">
+                <h3>CATEGORIAS</h3>
+            </div>
+            <div class="content">
+                <fast-select id="list-genders">
+                    <fast-option value="-1">Elegir la categoría</fast-option>
+                    <fast-option *ngFor="let gender of genders" value="{{gender.url}}">{{gender.name}}</fast-option>
+                </fast-select>
+            </div>
+        </div>
+        <div class="card top-margin">
+            <div class="header">
+                <h3>REDES SOCIALES</h3>
+            </div>
+            <div class="content">
+                <div class="social-panel">
+                    <img (click)="openLink('https://www.facebook.com/henaojaraonline')" src="./assets/@Icons/facebook-app.svg">
+                    <img (click)="openLink('https://instagram.com/henaojara')" src="./assets/@Icons/ig-instagram.svg">
+                    <img (click)="openLink('https://discord.gg/2yQVAWaBPk')" src="./assets/@Icons/discord.svg">
+                </div>
+            </div>
+        </div>
+        <div class="card top-margin">
+            <div class="header">
+                <h3>EXTRAS</h3>
+            </div>
+            <div class="content">
+                <div class="buttons" id="buttons-extras">
+                    <fast-button (click)="openLink('https://henaojara.com/peticiones-de-anime/')">
+                        <fluent-ui-icon slot="start" name="window_new_20_regular" class="beat" style="fill: #FFFFFF;"></fluent-ui-icon>
+                        Peticiones
+                    </fast-button>
+                    <fast-button (click)="openLink('https://www.paypal.com/donate/?hosted_button_id=RTV3KEBY72LMS')">
+                        <fluent-ui-icon slot="start" name="window_new_20_regular" class="beat" style="fill: #FFFFFF;"></fluent-ui-icon>
+                        Donaciones
+                    </fast-button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="lists">
+        <fast-toolbar>
+            <h3 slot="start">TOP ANIMES POPULARES</h3>
+        </fast-toolbar>
+        <fast-progress class="loading" *ngIf="!dataLoading"></fast-progress>
+        <div class="error" *ngIf="showError">
+            <img src="./assets/net_error.svg">
+            <div class="title">
+                <h2>Ocurrió un error al cargar :(</h2>
+                <fast-button (click)="reloadData()" appearance="accent">Reintentar</fast-button>
+            </div>
+        </div>
+        <ul *ngIf="dataLoading">
+            <li *ngFor="let itemList of listPopulars">
+                <items-list2
+                    [title]="itemList.title"
+                    [image]="itemList.image"
+                    type="{{itemList.type}}"
+                    rank="{{itemList.rank}}"
+                    [url]="itemList.url"
+                    (click)="openInfoAnime(itemList.url)"
+                ></items-list2>
+            </li>
+        </ul>
+    </div>
+    <div class="lists">
+        <fast-toolbar>
+            <h3 slot="start">ÚLTIMOS EPISODIOS</h3>
+        </fast-toolbar>
+        <fast-progress class="loading" *ngIf="!dataLoading"></fast-progress>
+        <div class="error" *ngIf="showError">
+            <img src="./assets/net_error.svg">
+            <div class="title">
+                <h2>Ocurrió un error al cargar :(</h2>
+                <fast-button (click)="reloadData()" appearance="accent">Reintentar</fast-button>
+            </div>
+        </div>
+        <ul *ngIf="dataLoading">
+            <li *ngFor="let itemList of listUploads">
+                <items-list3 [title]="itemList.title" [image]="itemList.image" [extra]="itemList?.extra" type="{{itemList.type}}" rank="{{itemList.rank}}" [url]="itemList.url"></items-list3>
+            </li>
+        </ul>
+    </div>
+</ngx-simplebar>

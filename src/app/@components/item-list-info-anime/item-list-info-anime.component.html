@@ -1,0 +1,14 @@
+<div class="item-flex">
+    <div class="playIcon">
+        <svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+            <path class="st0" d="M4,18c0-7.7,6.3-14,14-14s14,6.3,14,14s-6.3,14-14,14S4,25.7,4,18z M16.4,12.6c-0.8-0.5-1.9-0.2-2.4,0.7 c-0.1,0.3-0.2,0.6-0.2,0.8v7.7c0,1,0.8,1.7,1.8,1.7c0.3,0,0.6-0.1,0.8-0.2l8.1-4.5c0.5-0.3,0.7-0.9,0.4-1.4 c-0.1-0.2-0.2-0.3-0.4-0.4C24.5,17.1,16.4,12.6,16.4,12.6z"/>
+        </svg>
+    </div>
+    <div class="image" #LoadingItem>
+        <fast-skeleton class="img-loading" shimmer shape="rect"></fast-skeleton>
+        <img class="img-content" [src]="image">
+    </div>
+    <div class="title">
+        <h3>{{title}}</h3>
+    </div>
+</div>

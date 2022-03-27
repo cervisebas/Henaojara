@@ -1,0 +1,192 @@
+ngx-simplebar#home-page {
+    width: 100%;
+    height: 100%;
+    div.lists {
+        width: calc(100% - 30px);
+        padding-right: 20px;
+        padding-left: 10px;
+        fast-toolbar {
+            width: 100%;
+            h3 {
+                margin-left: 6px;
+                margin-top: 24px;
+                margin-bottom: 18px;
+                font-size: 24px;
+                font-weight: bold;
+            }
+        }
+        fast-progress.loading {
+            width: calc(100% - 290px);
+            margin-left: 8px;
+            margin-right: 8px;
+        }
+        div.buttonMore {
+            width: 100%;
+            --accent-fill-rest: #391648;
+            padding-top: 8px;
+            padding-bottom: 12px;
+            display: flex;
+            justify-content: center;
+        }
+        div.error {
+            padding-top: 16px;
+            padding-bottom: 16px;
+            padding-left: 16px;
+            --accent-fill-rest: #391648;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            img {
+                fill: #FFFFFF;
+                width: 100px;
+                height: 100px;
+                margin-right: 20px;
+            }
+            div.title {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                h2 {
+                    font-weight: 700;
+                    font-size: 26px;
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                }
+                fast-button {
+                    margin-left: 8px;
+                }
+            }
+        }
+        ul {
+            display: flex;
+            flex-flow: row wrap;
+            width: calc(100% - 280px);
+            padding: 0;
+            li {
+                width: calc((100% / 3) - 10px);
+                margin-left: 10px;
+                margin-top: 8px;
+                list-style: none;
+                height: auto;
+            }
+        }
+    }
+    div.fixed {
+        position: absolute;
+        right: 26px;
+        top: 64px;
+        width: 260;
+        z-index: 6;
+        div.card.top-margin {
+            margin-top: 16px;
+        }
+        div.card {
+            width: 100%;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-right: 5px;
+            padding-left: 5px;
+            background-color: #28153b;
+            border-radius: 8px;
+            box-shadow: 0 0 5px 1px rgba($color: #000000, $alpha: .4);
+            div.header {
+                height: 24px;
+                width: 100%;
+                border-bottom: 1px solid #2d3e40;
+                padding-bottom: 5px;
+                h3 {
+                    margin-top: 12px;
+                    margin-left: 8px;
+                    margin-bottom: 10px;
+                    font-size: 18px;
+                    font-weight: 400;
+                }
+            }
+            div.content {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                margin-top: 12px;
+                div.social-panel {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    align-content: center;
+                    img {
+                        width: 40px;
+                        height: 40px;
+                        margin: 8px;
+                        cursor: pointer;
+                    }
+                }
+                div.buttons {
+                    display: flex;
+                    flex-direction: column;
+                    width: 90%;
+                    fast-button {
+                        width: 100%;
+                        margin-top: 6px;
+                        margin-bottom: 6px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (min-width: 900px) {
+    ngx-simplebar#home-page {
+        div.lists {
+            ul {
+                li {
+                    width: calc(((100% / 4) - 10px));
+                }
+            }
+        }
+    }
+}
+@media only screen and (min-width: 1200px) {
+    ngx-simplebar#home-page {
+        div.lists {
+            ul {
+                li {
+                    width: calc(((100% / 5) - 10px));
+                }
+            }
+        }
+    }
+}
+@media only screen and (min-width: 1500px) {
+    ngx-simplebar#home-page {
+        div.lists {
+            ul {
+                li {
+                    width: calc(((100% / 6) - 10px));
+                }
+            }
+        }
+    }
+}
+@media only screen and (min-width: 1700px) {
+    ngx-simplebar#home-page {
+        div.lists {
+            ul {
+                li {
+                    width: calc(((100% / 7) - 10px));
+                }
+            }
+        }
+    }
+}
+@media only screen and (min-width: 2000px) {
+    ngx-simplebar#home-page {
+        div.lists {
+            ul {
+                li {
+                    width: calc(((100% / 10) - 10px));
+                }
+            }
+        }
+    }
+}

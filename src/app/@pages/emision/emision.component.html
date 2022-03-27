@@ -1,0 +1,69 @@
+<ngx-simplebar [options]="optionScroll" id="emision-page">
+    <div class="tableEmision">
+        <table>
+            <thead>
+                <tr class="color">
+                    <td><div class="day">DOMINGO</div></td>
+                    <td><div class="day">LUNES</div></td>
+                    <td><div class="day">MARTES</div></td>
+                    <td><div class="day">MIERCOLES</div></td>
+                    <td><div class="day">JUEVES</div></td>
+                    <td><div class="day">VIERNES</div></td>
+                    <td><div class="day">SABADO</div></td>
+                </tr>
+                <tr class="loading" *ngIf="!dataLoading"><td colspan="7"><fast-progress></fast-progress></td></tr>
+            </thead>
+            <tbody *ngIf="dataLoading">
+                <tr>
+                    <td colspan="7">
+                        <div class="error" *ngIf="showError">
+                            <img src="./assets/net_error.svg">
+                            <div class="title">
+                                <h2>Ocurrió un error al cargar :(</h2>
+                                <fast-button (click)="reloadData()" appearance="accent">Reintentar</fast-button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr *ngFor="let itemTable of tableEmision">
+                    <td><items-table *ngIf="itemTable.sunday" image="{{itemTable.sunday?.image}}" (click)="openInfoAnime(itemTable.sunday?.url)"></items-table></td>
+                    <td><items-table *ngIf="itemTable.monday" image="{{itemTable.monday?.image}}" (click)="openInfoAnime(itemTable.monday?.url)"></items-table></td>
+                    <td><items-table *ngIf="itemTable.tuesday" image="{{itemTable.tuesday?.image}}" (click)="openInfoAnime(itemTable.tuesday?.url)"></items-table></td>
+                    <td><items-table *ngIf="itemTable.wednesday" image="{{itemTable.wednesday?.image}}" (click)="openInfoAnime(itemTable.wednesday?.url)"></items-table></td>
+                    <td><items-table *ngIf="itemTable.thursday" image="{{itemTable.thursday?.image}}" (click)="openInfoAnime(itemTable.thursday?.url)"></items-table></td>
+                    <td><items-table *ngIf="itemTable.friday" image="{{itemTable.friday?.image}}" (click)="openInfoAnime(itemTable.friday?.url)"></items-table></td>
+                    <td><items-table *ngIf="itemTable.saturday" image="{{itemTable.saturday?.image}}" (click)="openInfoAnime(itemTable.saturday?.url)"></items-table></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <fast-divider></fast-divider>
+    <div class="seriesEmision">
+        <fast-toolbar>
+            <h3 slot="start">SERIES Y PELICULAS</h3>
+        </fast-toolbar>
+        <fast-progress class="loading" *ngIf="!dataLoading"></fast-progress>
+        <div class="error" *ngIf="showError">
+            <img src="./assets/net_error.svg">
+            <div class="title">
+                <h2>Ocurrió un error al cargar :(</h2>
+                <fast-button (click)="reloadData()" appearance="accent">Reintentar</fast-button>
+            </div>
+        </div>
+        <ul *ngIf="dataLoading">
+            <li *ngFor="let itemList of listEmision">
+                <items-list
+                    [title]="itemList.title"
+                    [image]="itemList.image"
+                    type="{{itemList.type}}"
+                    [url]="itemList.url"
+                    (click)="openInfoAnime(itemList.url)"
+                ></items-list>
+            </li>
+        </ul>
+        <fast-progress class="loading" *ngIf="moreDataLoading"></fast-progress>
+        <div id="buttonMoreEmision" class="buttonMore" *ngIf="showButtonMore">
+            <fast-button (click)="reloadMoreData()" appearance="accent">Cargar más</fast-button>
+        </div>
+    </div>
+</ngx-simplebar>

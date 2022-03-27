@@ -1,0 +1,98 @@
+div.background {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #18142f;
+    overflow: hidden;
+    div.header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 73px;
+        width: 100%;
+        background-color: #29153c;
+        box-shadow: 0 0 6px 0.5px rgba($color: #000000, $alpha: .4);
+        fast-tabs {
+            fast-tab {
+                fluent-ui-icon {
+                    fill: rgba($color: #FFFFFF, $alpha: 0.9);
+                }
+            }
+            fast-tab-panel {
+                width: 100%;
+                padding: 0;
+            }
+            fast-toolbar {
+                display: flex;
+                align-items: center;
+                margin-right: 16px;
+                fast-text-field {
+                    width: 240px;
+                }
+                fast-listbox {
+                    position: fixed;
+                    top: 95px;
+                    width: 240px;
+                    z-index: 60;
+                    right: 60px;
+                    display: none;
+                }
+                fast-button {
+                    margin-left: 4px;
+                    position: relative;
+                    fluent-ui-icon {
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        margin: auto;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+            }
+        }
+    }
+}
+div.modal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #18142f;
+    display: none;
+    div.page {
+        width: 100%;
+        height: 100%;
+    }
+}
+div.modal.search-result {
+    z-index: 10;
+}
+div.modal.view-anime {
+    z-index: 11;
+}
+div.modal.load-view {
+    z-index: 50;
+    background-color: rgba($color: #000000, $alpha: 0.65) !important;
+    div.content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        fast-progress-ring {
+            width: 56px;
+            height: 56px;
+        }
+    }
+}

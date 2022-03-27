@@ -1,0 +1,129 @@
+ngx-simplebar#movies-page {
+    width: 100%;
+    height: 100%;
+    div.listMovies {
+        width: calc(100% - 30px);
+        padding-right: 20px;
+        padding-left: 10px;
+        fast-toolbar {
+            width: 100%;
+            h3 {
+                margin-left: 6px;
+                margin-top: 24px;
+                margin-bottom: 18px;
+                font-size: 24px;
+                font-weight: bold;
+            }
+        }
+        fast-progress.loading {
+            margin-left: 8px;
+            margin-right: 8px;
+        }
+        div.buttonMore {
+            width: 100%;
+            --accent-fill-rest: #391648;
+            padding-top: 8px;
+            padding-bottom: 12px;
+            display: flex;
+            justify-content: center;
+        }
+        div.error {
+            padding-top: 16px;
+            padding-bottom: 16px;
+            padding-left: 16px;
+            --accent-fill-rest: #391648;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            img {
+                fill: #FFFFFF;
+                width: 100px;
+                height: 100px;
+                margin-right: 20px;
+            }
+            div.title {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                h2 {
+                    font-weight: 700;
+                    font-size: 26px;
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                }
+                fast-button {
+                    margin-left: 8px;
+                }
+            }
+        }
+        ul {
+            display: flex;
+            flex-flow: row wrap;
+            width: 100%;
+            padding: 0;
+            li {
+                width: calc((100% / 5) - 10px);
+                margin-left: 10px;
+                margin-top: 8px;
+                list-style: none;
+                height: auto;
+            }
+        }
+    }
+}
+@media only screen and (min-width: 900px) {
+    ngx-simplebar#movies-page {
+        div.listMovies {
+            ul {
+                li {
+                    width: calc((100% / 6) - 10px);
+                }
+            }
+        }
+    }
+}
+@media only screen and (min-width: 1200px) {
+    ngx-simplebar#movies-page {
+        div.listMovies {
+            ul {
+                li {
+                    width: calc((100% / 7) - 10px);
+                }
+            }
+        }
+    }
+}
+@media only screen and (min-width: 1500px) {
+    ngx-simplebar#movies-page {
+        div.listMovies {
+            ul {
+                li {
+                    width: calc((100% / 8) - 10px);
+                }
+            }
+        }
+    }
+}
+@media only screen and (min-width: 1700px) {
+    ngx-simplebar#movies-page {
+        div.listMovies {
+            ul {
+                li {
+                    width: calc((100% / 9) - 10px);
+                }
+            }
+        }
+    }
+}
+@media only screen and (min-width: 2000px) {
+    ngx-simplebar#movies-page {
+        div.listMovies {
+            ul {
+                li {
+                    width: calc((100% / 10) - 10px);
+                }
+            }
+        }
+    }
+}

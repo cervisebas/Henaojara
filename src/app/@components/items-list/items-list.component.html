@@ -1,0 +1,18 @@
+<div class="items-list" #ContentComponent>
+    <div class="loading" #LoadingItem>
+        <div class="type">
+            <div class="type-text">{{type}}</div>
+        </div>
+        <div class="hover-view">
+            <div class="play-icon">
+                <fluent-ui-icon name="play_24_filled" class="beat" style="fill: #0084cc;"></fluent-ui-icon>
+            </div>
+        </div>
+        <img class="img-loading" src="./assets/backgroung-load-min.svg">
+        <img class="img-content" [src]="image">
+        <fast-skeleton shimmer shape="rect"></fast-skeleton>
+    </div>
+    <div class="title">
+        <h3>{{title}}</h3>
+    </div>
+</div>

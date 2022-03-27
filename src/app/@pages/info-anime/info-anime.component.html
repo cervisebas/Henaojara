@@ -1,0 +1,46 @@
+<ngx-simplebar [options]="optionScroll" id="info-anime">
+    <div class="close" (click)="close()">
+        <fluent-ui-icon name="dismiss_28_filled" class="beat"></fluent-ui-icon>
+    </div>
+    <div class="info-header">
+        <div class="loading-cover" #LoadingImage>
+            <img class="img-loading" src="./assets/backgroung-load-min.svg">
+            <img class="img-content" [src]="image">
+            <fast-skeleton shape="rect"></fast-skeleton>
+        </div>
+        <div class="infoData">
+            <div class="title">
+                <h2>{{title}}</h2>
+            </div>
+            <div class="infoExtra">
+                <div class="status"><b>{{ (status)? "Emisión": "Finalizado" }}</b></div>
+                <h4><b>{{totalSeasons}}</b> Temporadas - <b>{{totalEpisodes}}</b> Episodios</h4>
+            </div>
+            <ngx-simplebar [options]="optionScroll">
+                <p>{{description}}</p>
+            </ngx-simplebar>
+        </div>
+    </div>
+    <div class="info-season">
+        <fast-accordion>
+            <fast-accordion-item slot="item" *ngFor="let season of lists">
+                <div class="chapters">
+                    <item-list-info-anime
+                        *ngFor="let chapter of season.chapters"
+                        [image]="chapter.image"
+                        [title]="chapter.title"
+                    ></item-list-info-anime>
+                </div>
+                <div slot="heading" class="heading">
+                    <h3>{{season.title}}</h3>
+                </div>
+                <svg style="stroke: #0084cc;" width="24" height="24" viewBox="0 0 24 24" fill="#0084cc" xmlns="http://www.w3.org/2000/svg" slot="collapsed-icon">
+                    <path transform="rotate(-90 12 12.0056)" id="svg_1" d="m16.97245,3.687a1,1 0 1 0 -1.454,-1.374l-8.5,9a1,1 0 0 0 0,1.374l8.5,9.001a1,1 0 1 0 1.454,-1.373l-7.852,-8.315l7.852,-8.313z"/>
+                </svg>
+                <svg style="stroke: #0084cc;" width="24" height="24" viewBox="0 0 24 24" fill="#0084cc" xmlns="http://www.w3.org/2000/svg" slot="expanded-icon">
+                    <path transform="rotate(90 12 12.0056)" id="svg_1" d="m16.97245,3.687a1,1 0 1 0 -1.454,-1.374l-8.5,9a1,1 0 0 0 0,1.374l8.5,9.001a1,1 0 1 0 1.454,-1.373l-7.852,-8.315l7.852,-8.313z"/>
+                </svg>
+            </fast-accordion-item>
+        </fast-accordion>
+    </div>
+</ngx-simplebar>
