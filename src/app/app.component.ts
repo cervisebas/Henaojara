@@ -19,9 +19,10 @@ const specialColor6 = DesignToken.create<string>("focus-stroke-outer");
 
 declare global {
   interface Window {
-    infoContent: ViewContainerRef,
-    $: any,
-    apiAnime: ApiAnime
+    infoContent: ViewContainerRef;
+    playChapter: ViewContainerRef;
+    $: any;
+    apiAnime: ApiAnime;
   }
 };
 
@@ -42,10 +43,12 @@ export class AppComponent implements OnInit, AfterViewInit {
   public listSearch: listSearch[] = []
   @ViewChild('searchsContent', { read: ViewContainerRef }) searchsContent: ViewContainerRef;
   @ViewChild('infoContent', { read: ViewContainerRef }) infoContent: ViewContainerRef;
+  @ViewChild('playChapter', { read: ViewContainerRef }) playChapter: ViewContainerRef;
 
   ngOnInit() {
     window.$ = $;
     window.apiAnime = this.apiAnime;
+    window.playChapter = this.playChapter;
     const titlebar = new Titlebar({
       backgroundColor: Color.fromHex('#29153c'),
       titleHorizontalAlignment: 'left',

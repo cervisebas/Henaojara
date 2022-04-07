@@ -29,6 +29,7 @@
                         *ngFor="let chapter of season.chapters"
                         [image]="chapter.image"
                         [title]="chapter.title"
+                        (click)="goChapter(chapter.title, chapter.url)"
                     ></item-list-info-anime>
                 </div>
                 <div slot="heading" class="heading">

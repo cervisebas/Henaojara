@@ -31,6 +31,7 @@ import { ItemsList3Component } from './@components/items-list3/items-list3.compo
 import { SearchResultsComponent } from './@pages/search-results/search-results.component';
 import { InfoAnimeComponent } from './@pages/info-anime/info-anime.component';
 import { ItemListInfoAnimeComponent } from './@components/item-list-info-anime/item-list-info-anime.component';
+import { ViewChapterComponent } from './@pages/view-chapter/view-chapter.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ItemListInfoAnimeComponent } from './@components/item-list-info-anime/i
     ItemsList3Component,
     SearchResultsComponent,
     InfoAnimeComponent,
-    ItemListInfoAnimeComponent
+    ItemListInfoAnimeComponent,
+    ViewChapterComponent
   ],
   imports: [
     BrowserModule,

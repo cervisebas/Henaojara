@@ -392,7 +392,7 @@ export class ApiAnime {
             }).catch((error)=>reject(error));
         });
     }
-    getVideoServers(url: string) {
+    getVideoServers(url: string): Promise<{ title: string, url: string }[]> {
         return new Promise((resolve, reject)=>{
             try {
                 jQuery.get(url, {}, (html)=>{

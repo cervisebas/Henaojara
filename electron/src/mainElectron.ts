@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, WebRequest } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import { enable as enableWebContents, initialize as initializeRemote } from '@electron/remote/main';
 import { SetupEvents } from './setupEvents';
 import { notify } from 'node-notifier';
@@ -20,12 +20,17 @@ type notification = {
     icon?: string;
 };
 
+
 function init() {
     initializeRemote();
     if (setupEvents.handleSquirrelEvent()) return false;
     splashWindow = new BrowserWindow({
         width: 260,
+        minWidth: 260,
+        maxWidth: 260,
         height: 360,
+        minHeight: 360,
+        maxHeight: 360,
         darkTheme: true,
         frame: false,
         titleBarStyle: 'hidden',
@@ -33,7 +38,7 @@ function init() {
         fullscreenable: false,
         maximizable: false,
         minimizable: false,
-        resizable: false,
+        resizable: true,
         movable: false,
         transparent: false,
         webPreferences: {
@@ -59,7 +64,8 @@ function init() {
             }
         });
         loadURL(appWindow);
-        appWindow.webContents.setWindowOpenHandler((details)=>{
+        appWindow.setMenuBarVisibility(false);
+        appWindow.webContents.setWindowOpenHandler(()=>{
             return {
                 action: 'allow',
                 overrideBrowserWindowOptions: {
@@ -78,13 +84,7 @@ function init() {
                 }
             }
         });
-        appWindow.webContents.once('dom-ready', ()=>{
-            setTimeout(()=>{
-                splashWindow.hide();
-                splashWindow.destroy();
-                appWindow.show();
-            }, 2048);
-        });
+        appWindow.webContents.once('dom-ready', ()=>setTimeout(()=>{ splashWindow.hide(); splashWindow.destroy(); appWindow.show(); }, 2048));
         appWindow.on('maximize', ()=>appWindow.webContents.send('window-maximize', 'true'));
         appWindow.on('unmaximize', ()=>appWindow.webContents.send('window-restore', 'true'));
         appWindow.on('resize', ()=>appWindow.webContents.send('window-resize', 'true'));

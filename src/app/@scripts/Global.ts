@@ -2,10 +2,12 @@ import { Injectable, ViewContainerRef } from "@angular/core";
 import { InfoAnimeComponent } from "../@pages/info-anime/info-anime.component";
 import { ApiAnime } from "./ApiAnime";
 import * as $ from 'jquery';
+import { ViewChapterComponent } from "../@pages/view-chapter/view-chapter.component";
 
 declare global {
     interface Window {
-      infoContent: ViewContainerRef
+      infoContent: ViewContainerRef;
+      playChapter: ViewContainerRef;
     }
 };
 
@@ -16,6 +18,7 @@ export class FGlobal {
     ) {}
 
     private isOpenInfo: boolean = false;
+    private isOpenViewChapter: boolean = false;
 
     openInfoAnime(url: string) {
         return new Promise((resolve, reject)=>{
@@ -38,7 +41,38 @@ export class FGlobal {
                     $('#view-anime').fadeIn('fast');
                     $("div#load-viewer").fadeOut('fast');
                     return resolve(true);
-                }).catch((reason)=>reject(reason));
+                }).catch((reason)=>{
+                    reject(reason);
+                    $("div#load-viewer").fadeOut('fast');
+                });
+            } catch (error) {
+                reject(error);
+                $("div#load-viewer").fadeOut('fast');
+            }
+        });
+    }
+    openChapter(url: string, name: string) {
+        return new Promise((resolve, reject)=>{
+            try {
+                $("div#load-viewer").fadeIn('fast');
+                this.apiAnime.getVideoServers(url).then((value)=>{
+                    if (this.isOpenViewChapter) window.playChapter.clear();
+                    this.isOpenViewChapter = true;
+                    var ref = window.playChapter?.createComponent(ViewChapterComponent);
+                    ref.instance.name = name;
+                    ref.instance.servers = value;
+                    ref.instance.close = ()=>{
+                        $("div#view-chapter").fadeOut('fast', ()=>{
+                            ref.destroy();
+                            this.isOpenViewChapter = false;
+                        });
+                    };
+                    $("div#view-chapter").fadeIn('fast');
+                    $("div#load-viewer").fadeOut('fast');
+                }).catch((error)=>{
+                    reject(error);
+                    $("div#load-viewer").fadeOut('fast');
+                });
             } catch (error) {
                 reject(error);
                 $("div#load-viewer").fadeOut('fast');

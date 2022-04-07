@@ -42,4 +42,8 @@ export class InfoAnimeComponent implements OnInit, AfterViewInit {
     });
   }
 
+  goChapter(name: string, url: string) {
+    console.log(name);
+    console.log(url);
+  }
 }
